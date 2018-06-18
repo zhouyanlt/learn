@@ -1,0 +1,6 @@
+myapp: a.o b.o c.o
+	gcc -o myapp a.o b.o c.o
+
+a.o: a.h b.h c.h a.c
+b.o: b.c b.h c.h
+c.o: c.c a.h c.h
