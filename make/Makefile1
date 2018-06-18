@@ -1,0 +1,18 @@
+# thie is first makefile
+
+all: myapp
+
+myapp: a.o b.o c.o
+	gcc -o myapp a.o b.o c.o
+
+a.o: a.h b.h c.h a.c
+	gcc -c a.c
+
+b.o: b.c b.h c.h
+	gcc -c b.c
+
+c.o: c.c a.h c.h
+	gcc -c c.c
+
+clean:
+	rm -f *.o myapp

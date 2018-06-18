@@ -1,0 +1,28 @@
+all: myapp
+
+# Which compiler
+CC = gcc
+
+# Where are include files kept
+INCLUDE = .
+
+# Options for develpoment
+CFLAGS = -g -Wall -ansi
+
+# Options for release
+# CFLAGS = -O -Wall -ansi
+
+myapp: a.o b.o c.o
+	$(CC) -o myapp a.o b.o c.o
+
+a.o: a.h b.h c.h a.c
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c a.c
+
+b.o: b.c b.h c.h
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c b.c
+
+c.o: c.c a.h c.h
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c c.c
+
+clean:
+	rm -f *.o myapp
